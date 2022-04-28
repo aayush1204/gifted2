@@ -1,0 +1,39 @@
+
+
+.days {
+    width: 1000px;
+  }
+  
+  .day {
+    width: 120px;
+    height: 500px;
+    text-align: center;
+    color: black;
+    background-color: #efeff6;
+    padding:10px;
+    float:left;
+    margin-right:7px;
+    margin-bottom:5px;
+  }
+  
+  .datelabel {
+    margin-bottom: 15px;
+  }
+  
+  .timeslot {
+    background-color: #0258d8;
+    width: 100px;
+    height: 35px;
+    color: white;
+    padding:7px;
+    margin-top: 5px;
+    font-size: 14px;
+    border-radius: 3px;
+    vertical-align: center;
+    text-align:center;
+  }
+  
+  .timeslot:hover { 
+    background-color: #0d1d72;
+    cursor: pointer;
+  }

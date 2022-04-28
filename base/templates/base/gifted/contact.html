@@ -1,0 +1,449 @@
+
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="free-educational-responsive-web-template-webEdu">
+	<meta name="author" content="webThemez.com">
+	<title>Contact Us</title>
+	<link rel="favicon" href="{% static 'gifted_site/assets/images/favicon.png' %}">
+	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<link rel="stylesheet" href="{% static 'gifted_site/assets/css/bootstrap.min.css'%}">
+	<link rel="stylesheet" href="{% static 'gifted_site/assets/css/font-awesome.min.css'%}">
+	<link rel="stylesheet" href="{% static 'gifted_site/assets/css/bootstrap-theme.css'%}" media="screen">
+	<link rel="stylesheet" href="{% static 'gifted_site/assets/css/style.css'%}">
+	<link rel="stylesheet" href="{% static 'gifted_site/assets/css/gooey.css'%}">
+	<link rel="stylesheet" href="{% static 'gifted_site/assets/css/Logo.css'%}">
+	<link rel="stylesheet" href="{% static 'gifted_site/assets/css/datetime.css'%}">
+</head>
+
+<body>
+
+
+
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse">
+		<div class="container">
+		  <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- <a class="navbar-brand" href="index.php" style="margin-top: auto;"> -->
+
+        <!-- Logo Start -->
+     
+        <a class="button" href="#" style="text-decoration:none;">
+        <div class="container-sm" style="margin-bottom:15px;">
+          <h1><span>GIFTED</span></h1>
+          <div class="blobs_1" style="display:block; position:absolute;"></div>
+          <div class="blobs_2" style="display:block; position:absolute;"></div>
+          <div class="blobs_3" style="display:block; position:absolute;"></div>
+          <div class="blobs_4" style="display:block; position:absolute;"></div>
+        </div>
+        </a>
+		  </div>
+
+    <!-- Logo end -->
+			  <div class="navbar-collapse collapse">
+			  <ul class="nav navbar-nav pull-right mainNav" style="margin-top:25px;">
+				<li ><a href="{% url 'landing_page' %}">Home</a></li>
+				<li><a href="{% url 'about_us' %}">About</a></li>
+				<li><a href="{% url 'home' %}">GCR</a></li>
+				<li><a href="{% url 'courses' %}">Courses</a></li>
+				<li><a href="{% url 'prices' %}">Prices</a></li>
+				<li><a href="{% url 'books' %}">Books</a></li>
+			  <li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Feedback <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+				  <li><a href="sidebar-right.html">Feedback Form</a></li>
+				  <li><a href="https://www.abilities.com/community/parents-20things.html">You Must Know This</a></li>
+				  <li><a href="https://kidshealth.org/en/parents/discipline-special.html">How To Deal</a></li>
+				  <li><a href="https://www.verywellfamily.com/what-are-special-needs-3106002">What To Expect</a></li>
+				</ul>
+			  </li>
+			  <li class="active"><a href="{% url 'contact_us' %}">Connect With Us</a></li>
+			  <li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">User <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+				<p><a href="reset-password.php" class="btn btn-warning">Reset Your Password</a></p>
+				<a href="logout.php" class="btn btn-danger ml-3">Click to Logout</a>
+				</ul>
+			  </li> 
+			</ul>
+		  </div>
+		  <!--/.nav-collapse -->
+		</div>
+	  </div>
+	  <!-- /.navbar -->
+
+		<header id="head" class="secondary" style="background-color:#2e45c7">
+            <div class="container">
+                    <h2>Connect & Consult With Us</h2>
+                    <p>Reach us out as we provide consultation & proper educational help to our subscribers!</p>
+                </div>
+    </header>
+
+
+	<!-- container -->
+	<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<h3 class="section-title">Our Message</h3>
+						<p>We aim to reach to you and every single child who needs aid. &nbspAs we always say, "Help will always be given to those who ask for it."</p>
+						<form class="form-light mt-20" role="form" method = "POST" action="{% url 'contact_us' %}">
+							{% csrf_token %}
+							<div class="form-group">
+								<label>Name</label>
+								<input type="text" id = 'name' name='name' class="form-control" placeholder="Your name">
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Email</label>
+										<input type="email" id = 'email' name="email"class="form-control" placeholder="Email address">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Phone</label>
+										<input type="text" id="phone" name="phone" class="form-control" placeholder="Phone number">
+									</div>
+								</div>
+							</div>
+							  <h3 style ="text-align:center; color:black;"> Choose Doctor </h3>
+							  <div class="row">
+
+								{% for i in teachers %}
+								  <div class="col-md-4 col-lg-4 col-sm-4">
+        
+									<label>
+									  <input type="radio" name="product" value="{{i.teacher_id.username}}" class="card-input-element" />
+
+										<div class="panel panel-default card-input">
+										  <div class="panel-heading">{{i.teacher_id.username}}</div>
+										   <div class="member-img">
+											<!-- Image  -->
+											<img class="img-responsive" src="{% static 'gifted_site/Images/Doctor1.png'%}" alt="">
+											</div>
+										  <div class="panel-body">
+											<br><p style ="text-align:center"> Special Educator</p><p style ="text-align:center">5 years of experience</p>	
+										  </div>
+										</div>
+									</label>       
+								  </div>
+								  {% endfor %}
+
+								  <!-- <div class="col-md-4 col-lg-4 col-sm-4">
+        
+									<label>
+									  <input type="radio" name="product" value="varija" class="card-input-element" />
+
+										<div class="panel panel-default card-input">
+										  <div class="panel-heading">Doctor B</div>
+										   <div class="member-img"> -->
+											<!-- Image  -->
+											<!-- <img class="img-responsive" src="{% static 'gifted_site/Images/Doctor2.jpg'%}" alt="">
+											</div>                       
+										  <div class="panel-body">
+											<br><p style ="text-align:center">Occupational Therapist</p><p style ="text-align:center">7 years of experience</p>
+										  </div>
+										</div>
+									</label>        
+								  </div> -->
+
+
+								  <!-- <div class="col-md-4 col-lg-4 col-sm-4">
+        
+									<label>
+									  <input type="radio" name="product" value="varija" class="card-input-element" />
+
+										<div class="panel panel-default card-input">
+										  <div class="panel-heading">Doctor C</div>
+										   <div class="member-img"> -->
+											<!-- Image  -->
+											<!-- <img class="img-responsive" src="{% static 'gifted_site/Images/Doctor3.jpg'%}" alt="">
+											</div>                     
+										  <div class="panel-body">
+											<br><p style ="text-align:center">Remedial Educator</p><p style ="text-align:center">4 years of experience</p>
+										  </div>
+										</div>
+									</label>
+        
+								  </div> -->
+							  </div>
+							  
+							  <h3 style ="text-align:center; color:black;"> Select the Date and Time for appointment </h3><br>
+							  <div class="row">
+									<!-- <label for="appointment" >Appointment Date:</label>
+								    <input type="date" id="date" name="appointment"><br><br>
+									<label for="appt">Select a time:</label>
+									<input type="time" id="appt" name="appt"><br><br><p><b>NOTE: SELECT TIME SLOTS ONLY BETWEEN 9:00 AM - 17:00 PM <p>
+							  </div> -->
+
+							  	<!-- Code for D&T Selector UI -->
+								  <div style="height:280px; width: 700px; overflow:scroll; border: 1px solid #ddd;">
+									<div class="days">
+									
+									<!-- <div class="day">
+									  <div class="datelabel"><strong>Monday</strong><br/>August 26</div>
+									  <input type='radio' name="time"  value="1MON"> 1:00<br>
+									 
+
+									  <input type='radio'  name="time" value="2MON"> 3:00<br>
+									  
+
+									  <input type='radio'  name="time" value="3MON">5:00<br>
+									  
+ 									  
+									</div> -->
+									  {% for i in dates_list %}
+									  <div class="day">
+											{% for key, value in i.items %}
+												<!-- <div class="datelabel"><strong>Tuesday</strong><br/>August 27</div> -->
+												<div class="datelabel"><strong>{{ key|date:"M d, Y"  }}</strong><br/></div>
+												
+												{% for j in value %}
+													<input type='radio' name="time" value="{{ j.timeslot }};{{ key|date:'Y-m-d'  }}"> {{ j.timeslot }}<br>
+												{% endfor %}
+
+											{% endfor %}
+										<!-- <input type='radio' name="time" value="1TUE"> 3:00<br> -->
+										
+									  </div>  
+
+									  {% endfor %}
+									
+									  </div>
+									</div>
+								  </div>
+
+								 
+							<br>
+							<br>
+							<button type="submit" class="btn btn-two" id="pay-btn1" style="background-color:#2e45c7;">Book</button><p><br/></p>
+						</form>
+					</div>
+						<br><h3> Connect with us on skype. (Click below)</h3>
+					    <!-- <button type="button"> <a href="skype:+919870540431?call">Call Me</a> </button> -->
+						<a href="skype:+919870540431?call"><img class="img-responsive" src="{% static 'gifted_site/Images/call.png'%}" alt=""></a>
+					<div class="col-md-4">
+						<div class="row">
+							<div class="col-md-6">
+								<!-- <h3 class="section-title">Office Address</h3> -->
+								<!-- <div class="contact-info">
+									<h5>Address</h5>
+									<p>
+										Thakur College Of Engineering And Technology.
+										A-Block, Thakur Educational Campus, Shyamnarayan Thakur Marg, Thakur Village, Kandivali(E). Mumbai - 400101.
+									</p>
+									
+									<h5>Email</h5>
+									<p><a href="https://www.tcetmumbai.in">tcet@thakureducation.org</a></p>
+									
+									<h5>Phone</h5>
+									<p>022-28461891</p> -->
+									<br><br><br><br>
+
+									
+									
+									<div class="text" id="goo"></div>
+									
+									<svg>
+										<filter id="gooey">
+											<feGaussianBlur in="SourceGraphic" stdDeviation="9" result="blur"></feGaussianBlur>
+											<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 28 -8" result="gooey"></feColorMatrix>
+											<feComposite in="SourceGraphic" in2="gooey" operator="atop"></feComposite>
+										</filter>
+									</svg> 
+									<!-- <p style="text-align: center; font-size: x-large; white-space:no-wrap;"><br><br><br>Learn With Us</p> -->
+								    </div> 
+								
+								</div> 
+						</div> 						
+					</div>
+				</div>
+			</div>
+	<!-- /container -->
+
+	 <footer id="footer">
+ 
+		<div class="container">
+   <div class="row">
+  <div class="footerbottom">
+    <div class="col-md-3 col-sm-6">
+      <div class="footerwidget">
+        <h4>
+          Course Categories
+        </h4>
+        <div class="menu-course">
+          <ul class="menu">
+            <li><a href="courses.html#list1">
+                Environmental Sudies 
+              </a>
+            </li>
+            <li><a href="courses.html#list2">
+                English Language
+              </a>
+            </li>
+            <li><a href="courses.html#list3">
+                Mathematics	
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="footerwidget">
+        <h4>
+          Links to Follow
+        </h4>
+        <div class="menu-course">
+          <ul class="menu">
+            <li> <a href="https://www.abilities.com/community/parents-20things.html">
+                You Must Know </a>
+            </li>
+            <li><a href="https://kidshealth.org/en/parents/discipline-special.html">
+            	How to Deal
+              </a>
+            </li>
+            <li><a href="https://www.verywellfamily.com/what-are-special-needs-3106002">
+                What to Expect
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="footerwidget">
+        <h4>
+          Browse through our Website
+        </h4>
+        <div class="menu-course">
+          <ul class="menu">
+            <li><a href="index.html">
+                Home
+              </a>
+            </li>
+            <li> <a href="about.html">
+                About
+              </a>
+            </li>
+            <li><a href="videos.html">
+                Books
+              </a>
+            </li>
+            <li>
+              <a href="sidebar-right.html">
+                Feedback
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6"> 
+            	<div class="footerwidget"> 
+                         <h4>Contact</h4> 
+                        <br>
+            <div class="contact-info"> 
+            <i class="fa fa-map-marker"></i> &nbsp&nbspMumbai, Maharashtra - India<br><br>
+            <i class="fa fa-phone"></i> &nbsp&nbsp+91 7045489328 <br><br>
+             <i class="fa fa-envelope-o"></i>&nbsp&nbspaunshumansaha9@gmail.com<br>
+              </div> 
+                </div><!-- end widget --> 
+    </div>
+  </div>
+</div>
+			<div class="social text-center">
+				<a href="https://twitter.com/login?lang=en"><i class="fa fa-twitter"></i></a>
+				<a href="https://en-gb.facebook.com/login/"><i class="fa fa-facebook"></i></a>
+				<a href="https://www.linkedin.com/login"><i class="fa fa-linkedin"></i></a>
+				<a href="https://account.microsoft.com/account?lang=en-us"><i class="fa fa-envelope-o"></i></a>
+				<a href="https://github.com/aunshumansaha9/Software-Development-Educator-System"><i class="fa fa-github"></i></a>
+			</div>
+
+			<div class="clear"></div>
+			<!--CLEAR FLOATS-->
+		</div>
+		<div class="footer2">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-md-6 panel">
+						<div class="panel-body">
+							<p class="simplenav">
+								<a href="index.html">Home</a> | 
+								<a href="about.html">About</a> |
+								<a href="courses.html">Courses</a> |
+								<a href="price.html">Quiz</a> |
+								<a href="videos.html">Books</a> |
+								<a href="contact.html">Contact Us</a>
+							</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 panel">
+						<div class="panel-body">
+							<p class="text-right">
+								Copyright &copy; 2020, Thakur College of Engineering & Tech.
+							</p>
+						</div>
+					</div>
+
+				</div>
+				<!-- /row of panels -->
+			</div>
+		</div>
+	</footer>
+	<!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+	var options1 = {
+	
+	// Enter the Key ID generated from the Dashboard
+	key: "{{ razorpay_merchant_key }}",
+	
+	// Amount is in currency subunits.
+	// Default currency is INR. Hence,
+	// 50000 refers to 50000 paise
+	amount: "0",
+	currency: "{{ currency }}",
+	
+	// Your/store name.
+	name: "Dj Razorpay",
+	
+	// Pass the `id` obtained in the response of Step 1
+	order_id: "{{ razorpay_order_id }}",
+	callback_url: "{{ callback_url }}",
+	};
+
+  
+	// initialise razorpay with the options.
+	var rzp1 = new Razorpay(options1);
+	
+	// add event listener to the payment button.
+	document.getElementById("pay-btn1").onclick = function (e) {
+	rzp1.open();
+	e.preventDefault();
+	};
+
+  
+</script> -->
+
+	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="{% static 'gifted_site/assets/js/custom.js'%}"></script>
+
+	<!-- Google Maps -->
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+	<script src="{% static 'gifted_site/assets/js/google-map.js'%}"></script>
+
+
+</body>
+</html>

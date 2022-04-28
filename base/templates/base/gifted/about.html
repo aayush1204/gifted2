@@ -1,0 +1,368 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="favicon" href="{% static 'gifted_site/assets/images/favicon.png' %}">
+	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<link rel="stylesheet" href="{% static 'gifted_site/assets/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'gifted_site/assets/css/font-awesome.min.css' %}"> 
+	<link rel="stylesheet" href="{% static 'gifted_site/assets/css/bootstrap-theme.css' %}" media="screen"> 
+	<link rel="stylesheet" href="{% static 'gifted_site/assets/css/style.css' %}">
+</head>
+
+<body>
+    <!-- Fixed navbar -->
+	<div class="navbar navbar-inverse">
+		<div class="container">
+		  <div class="navbar-header">
+			<!-- Button for smallest screens -->
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+			<a class="navbar-brand" href="index.php" style="margin-top: auto;">
+			  <img src="{% static 'gifted_site/assets/images/logo.png' %}"></a>
+		  </div>
+		  <div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav pull-right mainNav">
+			  <li ><a href="{% url 'landing_page' %}">Home</a></li>
+          <li class="active"><a href="{% url 'about_us' %}">About</a></li>
+          <li><a href="{% url 'home' %}">GCR</a></li>
+          <li><a href="{% url 'courses' %}">Courses</a></li>
+          <li><a href="{% url 'prices' %}">Prices</a></li>
+          <li><a href="{% url 'books' %}">Books</a></li>
+			  <li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Feedback <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+				  <li><a href="sidebar-right.html">Feedback Form</a></li>
+				  <li><a href="https://www.abilities.com/community/parents-20things.html">You Must Know This</a></li>
+				  <li><a href="https://kidshealth.org/en/parents/discipline-special.html">How To Deal</a></li>
+				  <li><a href="https://www.verywellfamily.com/what-are-special-needs-3106002">What To Expect</a></li>
+				</ul>
+			  </li>
+			  <li><a href="{% url 'contact_us' %}">Connect With Us</a></li>
+			  <li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">User <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+				<p><a href="reset-password.php" class="btn btn-warning">Reset Your Password</a></p>
+				<a href="logout.php" class="btn btn-danger ml-3">Click to Logout</a>
+				</ul>
+			  </li> 
+			</ul>
+		  </div>
+		  <!--/.nav-collapse -->
+		</div>
+	  </div>
+	  <!-- /.navbar -->
+
+ 	<header id="head" class="secondary">
+            <div class="container">
+                    <h1>About Us</h1>
+                    <p>Here's a glimpse of what we offer at WebEdu <p>
+                </div>
+    </header>
+
+
+    <!-- container -->
+    <section class="container">
+        <div class="row">
+            <!-- main content -->
+            <section class="col-sm-8 maincontent">
+				<br>
+				<br>
+                <h3>About Us</h3>
+                <p>
+                    <img src="{% static 'gifted_site/Images/About_US.jpg' %}" alt="" class="img-rounded pull-right" width="300">
+                    We at <b> WebEdu </b> aim for bettering the lives of Special Children through Technology. However alarming the situation seems to be, there aren’t many such websites/applications in the market till date. This venture will add ease and facility all in one place for those who need it most. 
+                </p>
+                <p> 
+				This website is basically for parents / guardians who have noticed some changes / symptoms in their child, but weren’t sure of what to do, or seek educational help for their Gifted child/children. Also this website would be useful for teachers and faculty who have less knowledge about the education of the special child and want to explore further regarding this topic. 
+				<br> Reading is kept simple and in an orderly manner as one can read through this document consecutively referring the index..
+				</p>
+				<br>
+				<br>
+				<br>		
+                <h3>Our Motivation</h3>
+				<p>
+				Most initiatives/apps focus on basic teaching of special children. In the increasing light of unawareness, our model aims at suggesting parents if their child requires medical attention or not. This matter should be alarming enough to create a positive, healthy and urgent response so as to decrease such cases from being ignored. We aim to attain sufficient level of functionality in order to suggest need for medical attention, treatment, and/or therapeutic methods according to the age group specified.
+				</p>
+				<strong>Strength</strong>
+                <p>
+				<ol> 
+					<li>Helps educate those aren’t willing to believe</li>
+					<li>Increases awareness regardless of the user type.</li>
+					<li>Simple and Easy to understand</li>
+				</ol>
+				</p>
+                <strong>Objective</strong>
+                <p>
+				<ol> 
+					<li>Aided schools in rural/ underdeveloped areas make use of our website.</li>
+					<li>We hope that this platform can be used by the government so that we could reach out to larger masses</li>
+					<li>Teachers can recommend this website to parents of special children who seek help in teaching them</li>
+				</ol>
+				</p>
+				<br>
+				<br>
+                <h3>Inspiration</h3>
+				<p><b>
+				“We care a lot about the product or mission, which is extremely important, but I love focusing on understanding the people behind it. When you take care of yourself as a leader, when you understand who you are—what makes you tick, what energizes you, what keeps you up at night—and when you understand your team and say ‘what do you need to accomplish the goals that are set in front of you?’ … and can truly understand them, you have an opportunity to really make a difference.”
+				</b></p>
+            </section>
+            <!-- /main -->
+			
+
+            <!-- Sidebar -->
+            <aside class="col-sm-4 sidebar sidebar-right">
+
+                <div class="panel">
+					<br>
+                    <h4>Related articles and blogs that may interest you:</h4>
+                    <ul class="list-unstyled list-spaces">
+					
+                        <li><a href="https://www.readingrockets.org/article/dyslexia-schools-assessment-and-identification">Dyslexia in the Schools: Assessment and Identification</a><br>
+                            <span class="small text-muted">By: Jennifer Lindstrom (2019)</span></li>
+							
+                        <li><a href="https://www.readingrockets.org/article/curriculum-materials-and-programs-individuals-autism-spectrum">Curriculum Materials and Programs for Individuals on the Autism Spectrum</a><br>
+                            <span class="small text-muted">By: Amy Moore Gaffney, Cathy Pratt, Indiana Resource Center for Autism</span></li>
+                        
+						<li><a href="http://www.autismadventures.com/">The Autism Helper</a><br>
+                            <span class="small text-muted">By: Melissa, was an elementary public school special education teacher for 7 years. </span></li>
+                        
+						<li><a href="https://www.simplyspecialed.com/">Special Ed</a><br>
+                            <span class="small text-muted">By: Alyssa, former Elementary Special Education and Life Skills teacher.</span></li>
+                       
+					   <li><a href="https://www.edutopia.org/article/new-strategies-special-education-kids-learn-home">New Strategies in Special Education as Kids Learn From Home</a><br>
+                            <span class="small text-muted">By: Nora Fleming, Senior Editor. Has 15 years of experience in the media, writing and communications fields. </span></li>
+                    
+					</ul>
+                </div>
+
+            </aside>
+            <!-- /Sidebar -->
+			
+			 <aside class="col-sm-4 sidebar sidebar-right">
+
+                <div class="panel">
+					<img src="{% static 'gifted_site/Images/Quote.jpg' %}">
+                </div>
+
+            </aside>
+			
+
+        </div>
+    </section>
+    <!-- /container -->
+    <section class="team-content" id="team">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Our Team</h3>
+                    <p>“A candle loses nothing by lighting another candle”, we here at WebEdu work towards having an environment where every child can feel safe and empowered regardless of thier condition.
+						<br> The following members are responsible for building the environment we speak about...
+					</p>
+                    <br />
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <!-- Team Member -->
+                    <div class="team-member">
+                        <!-- Image Hover Block -->
+                        <div class="member-img">
+                            <!-- Image  -->
+                            <img class="img-responsive" src="{% static 'gifted_site/Images/Aunshuman.jpeg' %}" alt="">
+                        </div>
+                        <!-- Member Details -->
+                        <h4>Aunshuman Saha</h4>
+                        
+                        <div class="team-socials">
+                            <a href="https://www.facebook.com/aunshuman.saha"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.linkedin.com/in/aunshuman-saha-2144bb18b/"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://twitter.com/AunshumanSaha"><i class="fa fa-twitter"></i></a>              
+                            <a href="https://github.com/aunshumansaha9"><i class="fa fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <!-- Team Member -->
+                    <div class="team-member pDark">
+                        <!-- Image Hover Block -->
+                        <div class="member-img">
+                            <!-- Image  -->
+                            <img class="img-responsive" src="{% static 'gifted_site/Images/Umair.jpeg' %}" alt="">
+                        </div>
+                        <!-- Member Details -->
+                        <h4>Umair Usmani</h4>
+                        
+                        <div class="team-socials">
+                            <a href="https://www.facebook.com/umair.usmani.1291"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.linkedin.com/in/umair-usmani-94b4751ba/"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://twitter.com/UmairUsmani007"><i class="fa fa-twitter"></i></a>                           
+                            <a href="https://github.com/Umair700"><i class="fa fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <!-- Team Member -->
+                    <div class="team-member pDark">
+                        <!-- Image Hover Block -->
+                        <div class="member-img">
+                            <!-- Image  -->
+                            <img class="img-responsive" src="{% static 'gifted_site/Images/Priya.jpeg' %}" alt="">
+                        </div>
+                        <!-- Member Details -->
+                        <h4>Priya Singh</h4>
+                        
+                        <div class="team-socials">
+                            <a href="https://www.facebook.com/profile.php?id=100011551306441"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.linkedin.com/in/priya-singh-7ab4a0194"><i class="fa fa-linkedin"></i></a>                          
+                            <a href="https://twitter.com/PriyaSi90548128?s=08"><i class="fa fa-twitter"></i></a>
+                            <a href="https://github.com/svpriya1405"><i class="fa fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+      
+            </div>
+        </div>
+    </section>
+  <footer id="footer">
+ 
+		<div class="container">
+   <div class="row">
+  <div class="footerbottom">
+    <div class="col-md-3 col-sm-6">
+      <div class="footerwidget">
+        <h4>
+          Course Categories
+        </h4>
+        <div class="menu-course">
+          <ul class="menu">
+            <li><a href="courses.html#1">
+                Environmental Sudies 
+              </a>
+            </li>
+            <li><a href="courses.html#2">
+                English Language
+              </a>
+            </li>
+            <li><a href="courses.html#3">
+                Mathematics	
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="footerwidget">
+        <h4>
+          Links to Follow
+        </h4>
+        <div class="menu-course">
+          <ul class="menu">
+            <li> <a href="https://www.abilities.com/community/parents-20things.html">
+                You Must Know </a>
+            </li>
+            <li><a href="https://kidshealth.org/en/parents/discipline-special.html">
+            	How to Deal
+              </a>
+            </li>
+            <li><a href="https://www.verywellfamily.com/what-are-special-needs-3106002">
+                What to Expect
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="footerwidget">
+        <h4>
+          Browse through our Website
+        </h4>
+        <div class="menu-course">
+          <ul class="menu">
+            <li><a href="index.html">
+                Home
+              </a>
+            </li>
+            <li> <a href="about.html">
+                About
+              </a>
+            </li>
+            <li><a href="videos.html">
+                Books
+              </a>
+            </li>
+            <li>
+              <a href="sidebar-right.html">
+                Feedback
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6"> 
+            	<div class="footerwidget"> 
+                         <h4>Contact</h4> 
+                        <br>
+            <div class="contact-info"> 
+            <i class="fa fa-map-marker"></i><a href="https://goo.gl/maps/cXfNWMLYgjNaZz4GA"> &nbsp&nbspMumbai, Maharashtra - India</a><br><br>
+            <i class="fa fa-phone"></i><a href="callto:917045489328"> &nbsp&nbsp+91 7045489328 </a><br><br>
+             <i class="fa fa-envelope-o"></i><a href="mailto:aunshumansaha9@gmailcom">&nbsp&nbspaunshumansaha9@gmail.com</a><br>
+              </div> 
+                </div><!-- end widget --> 
+    </div>
+  </div>
+</div>
+			<div class="social text-center">
+				<a href="https://twitter.com/login?lang=en"><i class="fa fa-twitter"></i></a>
+				<a href="https://en-gb.facebook.com/login/"><i class="fa fa-facebook"></i></a>
+				<a href="https://www.linkedin.com/login"><i class="fa fa-linkedin"></i></a>
+				<a href="https://account.microsoft.com/account?lang=en-us"><i class="fa fa-envelope-o"></i></a>
+				<a href="https://github.com/aunshumansaha9/Software-Development-Educator-System"><i class="fa fa-github"></i></a>
+			</div>
+
+			<div class="clear"></div>
+			<!--CLEAR FLOATS-->
+		</div>
+		<div class="footer2">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-md-6 panel">
+						<div class="panel-body">
+							<p class="simplenav">
+								<a href="index.php">Home</a> | 
+								<a href="about.html">About</a> |
+								<a href="courses.html">Courses</a> |
+								<a href="price.html">Quiz</a> |
+								<a href="videos.html">Books</a> |
+								<a href="contact.html">Contact Us</a>
+							</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 panel">
+						<div class="panel-body">
+							<p class="text-right">
+								Copyright &copy; 2020, Thakur College of Engineering & Tech.
+							</p>
+						</div>
+					</div>
+
+				</div>
+				<!-- /row of panels -->
+			</div>
+		</div>
+	</footer>
+
+    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="{% static 'gifted_site/assets/js/custom.js' %}"></script>
+</body>
+</html>

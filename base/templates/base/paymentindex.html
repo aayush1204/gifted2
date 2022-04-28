@@ -1,0 +1,236 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>GFG</title>
+  <link rel="stylesheet" href="{% static 'css/anim.css' %}">
+	<!-- <style>
+	* {
+		box-sizing: border-box;
+		padding: 0px;
+		margin: 0px;
+		font-family: cursive;
+	}
+	html,
+	body {
+		height: 100%;
+	}
+	body {
+		background-color: #f1f5f8;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.card {
+		background-color: white;
+		padding: 25px;
+		border: 1px solid #bbbbbb;
+		border-radius: 5px;
+		box-shadow: 1px 1px 10px 0px rgb(0 0 0 / 25%);
+	}
+	.title {
+		text-align: center;
+		letter-spacing: 1px;
+	}
+	.muted {
+		color: #8e7f7f;
+		display: block;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+	.btn_container {
+		padding: 20px;
+		text-align: center;
+	}
+	.btn {
+		border-radius: 4px;
+		cursor: pointer;
+		padding: 4px 8px;
+		background-color: #ffaaa7;
+		color: white;
+		font-size: 1.2em;
+		font-weight: 600;
+		letter-spacing: 1px;
+	}
+	</style> -->
+</head>
+<body>
+	<!-- <div class="card">
+	<h1 class="title">Buy Me a Chai </h1>
+	<small class="muted"
+		>If you like my work, you can support me by donating ₹200</small
+	>
+	<div class="btn_container"> -->
+		<!-- Payment Button -->
+		<!-- <button class="btn" id="pay-btn">Donate</button>
+	</div>
+	</div> -->
+
+  <div class="pricing-wrapper clearfix">
+    <!-- Titulo -->
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	<ul class="navbar-nav mr-auto">
+		<li class="nav-item active">
+			<a class="mybtn myinfo mybtn-active" type="button" href="{% url 'logout' %}" style="text-decoration: none;">Logout<span class="sr-only"></span></a>
+		  </li>
+		  {% if finished_free_trial == 0 %}
+		  <li class="nav-item active">
+			<a class="mybtn myinfo mybtn-active" type="button" href="{% url 'freetrial' %}" style="text-decoration: none;">Free Trial<span class="sr-only"></span></a>
+		  </li>
+		  {% endif %}
+	</ul>
+	</div>
+	
+
+    <h1 class="pricing-table-title">Price Scheme <a href="#">Gifted</a></h1>
+
+    <div class="pricing-table">
+      <h3 class="pricing-title">Basic</h3>
+      <div class="price">₹ 0</div>
+      <!-- Lista de Caracteristicas / Propiedades -->
+      <ul class="table-list">
+        <li>Free <span>Login to Homepage</span></li>
+        <li>Access <span>to Study Material</span></li>
+        <li>Free <span>Access to blogs </span></li>
+        <li>Course <span class="unlimited">Videos</span></li>
+        <li>Enquiry call <span class="unlimited">Free</span></li>
+        <li>Consultation <span>& Information</span></li>
+      </ul>
+      <!-- Contratar / Comprar -->
+      <div class="table-buy">
+        <p>₹ 0</p>
+        <button class="btn pricing-action" id="pay-btn1">BUY</button>
+      </div>
+    </div>
+    
+    <div class="pricing-table recommended">
+      <h3 class="pricing-title">Short term</h3>
+      <div class="price">₹ 400</div>
+      <!-- Lista de Caracteristicas / Propiedades -->
+      <ul class="table-list">
+        <li>35 GB <span>De almacenamiento</span></li>
+        <li>5 Dominios <span>incluidos</span></li>
+        <li>100 GB <span>De transferencia mensual</span></li>
+        <li>Base de datos <span class="unlimited">ilimitadas</span></li>
+        <li>Cuentas de correo <span class="unlimited">ilimitadas</span></li>
+        <li>CPanel <span>incluido</span></li>
+      </ul>
+      <!-- Contratar / Comprar -->
+      <div class="table-buy">
+        <p>₹ 400</p>
+        <!-- <a href="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" class="pricing-action">BUY</a> -->
+        <button class="btn pricing-action" id="pay-btn2">BUY</button>
+      </div>
+    </div>
+
+    <div class="pricing-table">
+      <h3 class="pricing-title">Long term</h3>
+      <div class="price">₹ 1000</div>
+      <!-- Lista de Caracteristicas / Propiedades -->
+      <ul class="table-list">
+        <li>100 GB <span>De almacenamiento</span></li>
+        <li>8 Dominios <span>incluidos</span></li>
+        <li>200 GB <span>De transferencia mensual</span></li>
+        <li>Base de datos <span class="unlimited">ilimitadas</span></li>
+        <li>Cuentas de correo <span class="unlimited">ilimitadas</span></li>
+        <li>CPanel <span>incluido</span></li>
+      </ul>
+      <!-- Contratar / Comprar -->
+      <div class="table-buy">
+        <p>₹ 1000</p>
+        <button class="btn pricing-action" id="pay-btn3">BUY</button>
+      </div>
+    </div>
+  </div>
+        
+</body>
+
+<!-- Razorpay's Javascript code. -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+	var options1 = {
+	
+	// Enter the Key ID generated from the Dashboard
+	key: "{{ razorpay_merchant_key }}",
+	
+	// Amount is in currency subunits.
+	// Default currency is INR. Hence,
+	// 50000 refers to 50000 paise
+	amount: "0",
+	currency: "{{ currency }}",
+	
+	// Your/store name.
+	name: "Dj Razorpay",
+	
+	// Pass the `id` obtained in the response of Step 1
+	order_id: "{{ razorpay_order_id }}",
+	callback_url: "{{ callback_url }}",
+	};
+
+  var options2 = {
+	
+	// Enter the Key ID generated from the Dashboard
+	key: "{{ razorpay_merchant_key }}",
+	
+	// Amount is in currency subunits.
+	// Default currency is INR. Hence,
+	// 50000 refers to 50000 paise
+	amount: "400",
+	currency: "{{ currency }}",
+	
+	// Your/store name.
+	name: "Dj Razorpay",
+	
+	// Pass the `id` obtained in the response of Step 1
+	order_id: "{{ razorpay_order_id }}",
+	callback_url: "{{ callback_url }}",
+	};
+
+  var options3 = {
+	
+	// Enter the Key ID generated from the Dashboard
+	key: "{{ razorpay_merchant_key }}",
+	
+	// Amount is in currency subunits.
+	// Default currency is INR. Hence,
+	// 50000 refers to 50000 paise
+	amount: "1000",
+	currency: "{{ currency }}",
+	
+	// Your/store name.
+	name: "Dj Razorpay",
+	
+	// Pass the `id` obtained in the response of Step 1
+	order_id: "{{ razorpay_order_id }}",
+	callback_url: "{{ callback_url }}",
+	};
+	
+	// initialise razorpay with the options.
+	var rzp1 = new Razorpay(options1);
+	
+	// add event listener to the payment button.
+	document.getElementById("pay-btn1").onclick = function (e) {
+	rzp1.open();
+	e.preventDefault();
+	};
+
+  var rzp2 = new Razorpay(options2);
+	
+	// add event listener to the payment button.
+	document.getElementById("pay-btn2").onclick = function (e) {
+	rzp2.open();
+	e.preventDefault();
+	};
+
+  var rzp3 = new Razorpay(options3);
+	
+	// add event listener to the payment button.
+	document.getElementById("pay-btn3").onclick = function (e) {
+	rzp3.open();
+	e.preventDefault();
+	};
+</script>
+</html>

@@ -1,0 +1,145 @@
+{% extends 'base/parent_class.html' %}
+{% load static %}
+{% block head %}
+{% endblock %}
+
+{% block hamburger %}
+    <div class="jumbotron jumbotron-fluid class_jumbotron">
+        <div class="container">
+        <h1 class="display-4 class_title">{{ classroom.classroom_name }}</h1>
+        <p class="lead class_code">Class code: {{ classroom.class_code }}</p>
+        </div>
+    </div>
+    <input type="hidden" id="assignment_id" name="assignment_id">
+    <!-- For Student -->
+    {% if is_student == 1 %}
+    <div class="contatiner_of_assignments">
+        {% if assignments %}
+            {% for assignment, turned_in in assignments %}
+                {% for teacher in teachers %}
+                    {% if teacher.teacher_id.id == user.id %}
+                        <a href="{% url 'assignment_summary' assignment_id=assignment.id %}">
+                    {% else %}
+                        <a href="#submit_assignment" data-value="{{ assignment.id }}">
+                    {% endif %}
+                {% endfor %}
+                <div class="card assignment_card" style="width: 18rem;">
+                <div class="card-body">
+                <h5 class="card-title">{{assignment.assignment_name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Instructions -  {{ assignment.instructions }}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Assignment posted on {{ assignment.posted_date }}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Assignment due at {{ assignment.due_time }} on {{ assignment.due_date }}</h6>
+                {% if turned_in == '1' %}
+                <h6 class="card-subtitle mb-2 text-muted">Turned In </h6>
+                {% else %}
+                <h6 class="card-subtitle mb-2 text-muted">Not Turned In </h6>
+                {% endif %}
+                <a  href="{% get_media_prefix %}{{ assignment.instruction_file }}" download> Download instruction file </a>
+              
+                {% if turned_in == '1' %}
+                <form action="{% url 'del_sub' id=1 assignment_id=assignment.id %}" method="POST" id="del_sub_form" >
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-primary">Delete Submission</button>
+                </form> 
+                {% endif %}
+                
+              </div>
+                </div>
+                </a>
+          {% endfor %}
+        {% endif %}
+
+        {% if announcements %}
+        <h3 >Announcements</h3>
+            {% for announcement in announcements %}
+                
+                <div class="card assignment_card" style="width: 18rem;">
+                <div class="card-body">
+                <!-- <h5 class="card-title">{{assignment.assignment_name}}</h5> -->
+                <h6 class="card-subtitle mb-2 text-muted">Instructions -  {{ announcement.instructions }}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Announcement posted on {{ announcement.posted_date }}</h6>
+                <!-- <h6 class="card-subtitle mb-2 text-muted">Assignment due at {{ assignment.due_time }} on {{ assignment.due_date }}</h6> -->
+                {% if announcement.instruction_file %}
+                <a  href="{% get_media_prefix %}{{ announcement.instruction_file }}" download> Download instruction file </a>
+                {% endif %}
+              </div>
+                </div>
+                </a>
+          {% endfor %}
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <!-- For teacher -->
+      {% if is_student == 0 %}
+    <div class="contatiner_of_assignments">
+        {% if assignments %}
+            {% for assignment in assignments %}
+                {% for teacher in teachers %}
+                    {% if teacher.teacher_id.id == user.id %}
+                        <a href="{% url 'assignment_summary' assignment_id=assignment.id %}">
+                    {% else %}
+                        <a href="#submit_assignment" data-value="{{ assignment.id }}">
+                    {% endif %}
+                {% endfor %}
+                <div class="card assignment_card" style="width: 18rem;">
+                <div class="card-body">
+                <h5 class="card-title">{{assignment.assignment_name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Instructions -  {{ assignment.instructions }}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Assignment posted on {{ assignment.posted_date }}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Assignment due at {{ assignment.due_time }} on {{ assignment.due_date }}</h6>
+               
+                <a  href="{% get_media_prefix %}{{ assignment.instruction_file }}" download> Download instruction file </a>
+
+                
+              </div>
+                </div>
+                </a>
+          {% endfor %}
+        {% endif %}
+
+        {% if announcements %}
+        <h3 >Announcements</h3>
+            {% for announcement in announcements %}
+                
+                <div class="card assignment_card" style="width: 18rem;">
+                <div class="card-body">
+                <!-- <h5 class="card-title">{{assignment.assignment_name}}</h5> -->
+                <h6 class="card-subtitle mb-2 text-muted">Instructions -  {{ announcement.instructions }}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Announcement posted on {{ announcement.posted_date }}</h6>
+                <!-- <h6 class="card-subtitle mb-2 text-muted">Assignment due at {{ assignment.due_time }} on {{ assignment.due_date }}</h6> -->
+                {% if announcement.instruction_file %}
+                <a  href="{% get_media_prefix %}{{ announcement.instruction_file }}" download> Download instruction file </a>
+                {% endif %}
+              </div>
+                </div>
+                </a>
+          {% endfor %}
+        {% endif %}
+      </div>
+      {% endif %}
+
+
+    <div class="modal" tabindex="-1" id="submit_assignment">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Submit Assignment</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+             <div class="modal-body">
+                  <form method="POST" class="cclass_form" id="submit_assignment_form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="file" id="myfile" name="myfile">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Assignment</button>
+                  </form> 
+             </div>
+          </div>
+        </div>
+      </div>
+     
+{% endblock %}

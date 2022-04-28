@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="free-educational-responsive-web-template-webEdu">
+	<meta name="author" content="webThemez.com">
+	<title>Contact Us</title>
+	<link rel="favicon" href="assets/images/favicon.png">
+	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/bootstrap-theme.css" media="screen">
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+
+<?php  require("Functions.php"); ?>
+
+<?php 
+session_start();
+if(!isset($_SESSION['uname']))
+{
+  echo "Invalid access to given Page.. Please login for accessing this page...";
+  session_destroy();
+
+  exit();
+}
+
+
+echo "Welcome User : ".$_SESSION['uname'];
+
+//Step 4 : Releasing the result set
+mysqli_free_result($ResultSet);
+
+//Step 5 : Closing the DB Connection
+mysqli_close($dbConn);
+
+
+
+?>
+
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse">
+		<div class="container">
+		  <div class="navbar-header">
+			<!-- Button for smallest screens -->
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+			<a class="navbar-brand" href="index.php" style="margin-top: auto;">
+			  <img src="assets/images/logo.png"></a>
+		  </div>
+		  <div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav pull-right mainNav">
+			  <li><a href="index.php">Home</a></li>
+			  <li><a href="about.html">About</a></li>
+			  <li><a href="courses.html">Courses</a></li>
+			  <li><a href="price.html">Quiz</a></li>
+			  <li><a href="videos.html">Books</a></li>
+			  <li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Feedback <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+				  <li><a href="sidebar-right.html">Feedback Form</a></li>
+				  <li><a href="https://www.abilities.com/community/parents-20things.html">You Must Know This</a></li>
+				  <li><a href="https://kidshealth.org/en/parents/discipline-special.html">How To Deal</a></li>
+				  <li><a href="https://www.verywellfamily.com/what-are-special-needs-3106002">What To Expect</a></li>
+				</ul>
+			  </li>
+			  <li class="active"><a href="contact.html">Connect With Us</a></li>
+			  <li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">User <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+				<p><a href="reset-password.php" class="btn btn-warning">Reset Your Password</a></p>
+				<a href="logout.php" class="btn btn-danger ml-3">Click to Logout</a>
+				</ul>
+			  </li> 
+			</ul>
+		  </div>
+		  <!--/.nav-collapse -->
+		</div>
+	  </div>
+	  <!-- /.navbar -->
+
+		<header id="head" class="secondary">
+            <div class="container">
+                    <h1>Connect With Us</h1>
+                    <p>Reach us out as we provide 24/7 help to those who need it!</p>
+                </div>
+    </header>
+
+
+	<!-- container -->
+	<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<h3 class="section-title">Our Message</h3>
+						<p>We aim to reach to you and every single child who needs aid. &nbspAs we always say, "Help will always be given to those who ask for it."</p>
+						<form class="form-light mt-20" role="form">
+							<div class="form-group">
+								<label>Name</label>
+								<input type="text" class="form-control" placeholder="Your name">
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Email</label>
+										<input type="email" class="form-control" placeholder="Email address">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Phone</label>
+										<input type="text" class="form-control" placeholder="Phone number">
+									</div>
+								</div>
+							</div>
+							  <h3 style ="text-align:center"> Choose Doctor </h3>
+							  <div class="row">
+
+								  <div class="col-md-4 col-lg-4 col-sm-4">
+        
+									<label>
+									  <input type="radio" name="product" class="card-input-element" />
+
+										<div class="panel panel-default card-input">
+										  <div class="panel-heading">Doctor A</div>
+										   <div class="member-img">
+											<!-- Image  -->
+											<img class="img-responsive" src="Images/Doctor1.png" alt="">
+											</div>
+										  <div class="panel-body">
+											<br><p style ="text-align:center"> Special Educator</p><p style ="text-align:center">5 years of experience</p>	
+										  </div>
+										</div>
+									</label>       
+								  </div>
+
+
+								  <div class="col-md-4 col-lg-4 col-sm-4">
+        
+									<label>
+									  <input type="radio" name="product" class="card-input-element" />
+
+										<div class="panel panel-default card-input">
+										  <div class="panel-heading">Doctor B</div>
+										   <div class="member-img">
+											<!-- Image  -->
+											<img class="img-responsive" src="Images/Doctor2.jpg" alt="">
+											</div>                       
+										  <div class="panel-body">
+											<br><p style ="text-align:center">For Mentally Disabled Students</p><p style ="text-align:center">7 years of experience</p>
+										  </div>
+										</div>
+									</label>        
+								  </div>
+
+
+								  <div class="col-md-4 col-lg-4 col-sm-4">
+        
+									<label>
+									  <input type="radio" name="product" class="card-input-element" />
+
+										<div class="panel panel-default card-input">
+										  <div class="panel-heading">Doctor C</div>
+										   <div class="member-img">
+											<!-- Image  -->
+											<img class="img-responsive" src="Images/Doctor3.jpg" alt="">
+											</div>                     
+										  <div class="panel-body">
+											<br><p style ="text-align:center">For Physically Disabled Students</p><p style ="text-align:center">10 years of experience</p>
+										  </div>
+										</div>
+									</label>
+        
+								  </div>
+							  </div>
+							  
+							  <h3 style ="text-align:center"> Select the Date and Time for appointment </h3><br>
+							  <div class="row">
+									<label for="appointment" >Appointment Date:</label>
+								    <input type="date" id="date" name="appointment"><br><br>
+									<label for="appt">Select a time:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+									<input type="time" id="appt" name="appt"><br><br><p><b>NOTE: SELECT TIME SLOTS ONLY BETWEEN 9:00 AM - 17:00 PM <p>
+							  </div>					
+							<br>
+							<br>
+							<button type="submit" class="btn btn-two">Book</button><p><br/></p>
+						</form>
+					</div>
+						<br><h3> &nbsp&nbsp&nbsp&nbsp&nbsp&nbspStart a voice call with the doctor </h3>
+					    <!-- <button type="button"> <a href="skype:+919870540431?call">Call Me</a> </button> -->
+						<a href="skype:+919870540431?call"><img class="img-responsive" src="Images/call.png" alt="" ></a><br><br>
+					<div class="col-md-4">
+						<div class="row">
+							<div class="col-md-6">
+								<h3 class="section-title">Office Address</h3>
+								<div class="contact-info">
+									<h5>Address</h5>
+									<p>
+										Thakur College Of Engineering And Technology.
+										A-Block, Thakur Educational Campus, Shyamnarayan Thakur Marg, Thakur Village, Kandivali(E). Mumbai - 400101.
+									</p>
+									
+									<h5>Email</h5>
+									<p><a href="https://www.tcetmumbai.in">tcet@thakureducation.org</a></p>
+									
+									<h5>Phone</h5>
+									<p>022-28461891</p>
+								</div>
+							</div> 
+						</div> 						
+					</div>
+				</div>
+			</div>
+	<!-- /container -->
+
+	 <footer id="footer">
+ 
+		<div class="container">
+   <div class="row">
+  <div class="footerbottom">
+    <div class="col-md-3 col-sm-6">
+      <div class="footerwidget">
+        <h4>
+          Course Categories
+        </h4>
+        <div class="menu-course">
+          <ul class="menu">
+            <li><a href="courses.html#1">
+                Environmental Sudies 
+              </a>
+            </li>
+            <li><a href="courses.html#2">
+                English Language
+              </a>
+            </li>
+            <li><a href="courses.html#3">
+                Mathematics	
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="footerwidget">
+        <h4>
+          Links to Follow
+        </h4>
+        <div class="menu-course">
+          <ul class="menu">
+            <li> <a href="https://www.abilities.com/community/parents-20things.html">
+                You Must Know </a>
+            </li>
+            <li><a href="https://kidshealth.org/en/parents/discipline-special.html">
+            	How to Deal
+              </a>
+            </li>
+            <li><a href="https://www.verywellfamily.com/what-are-special-needs-3106002">
+                What to Expect
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="footerwidget">
+        <h4>
+          Browse through our Website
+        </h4>
+        <div class="menu-course">
+          <ul class="menu">
+            <li><a href="index.html">
+                Home
+              </a>
+            </li>
+            <li> <a href="about.html">
+                About
+              </a>
+            </li>
+            <li><a href="videos.html">
+                Books
+              </a>
+            </li>
+            <li>
+              <a href="sidebar-right.html">
+                Feedback
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6"> 
+            	<div class="footerwidget"> 
+                         <h4>Contact</h4> 
+                        <br>
+            <div class="contact-info"> 
+            <i class="fa fa-map-marker"></i> &nbsp&nbspMumbai, Maharashtra - India<br><br>
+            <i class="fa fa-phone"></i> &nbsp&nbsp+91 7045489328 <br><br>
+             <i class="fa fa-envelope-o"></i>&nbsp&nbspaunshumansaha9@gmail.com<br>
+              </div> 
+                </div><!-- end widget --> 
+    </div>
+  </div>
+</div>
+			<div class="social text-center">
+				<a href="https://twitter.com/login?lang=en"><i class="fa fa-twitter"></i></a>
+				<a href="https://en-gb.facebook.com/login/"><i class="fa fa-facebook"></i></a>
+				<a href="https://www.linkedin.com/login"><i class="fa fa-linkedin"></i></a>
+				<a href="https://account.microsoft.com/account?lang=en-us"><i class="fa fa-envelope-o"></i></a>
+				<a href="https://github.com/aunshumansaha9/Software-Development-Educator-System"><i class="fa fa-github"></i></a>
+			</div>
+
+			<div class="clear"></div>
+			<!--CLEAR FLOATS-->
+		</div>
+		<div class="footer2">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-md-6 panel">
+						<div class="panel-body">
+							<p class="simplenav">
+								<a href="index.html">Home</a> | 
+								<a href="about.html">About</a> |
+								<a href="courses.html">Courses</a> |
+								<a href="price.html">Quiz</a> |
+								<a href="videos.html">Books</a> |
+								<a href="contact.html">Contact Us</a>
+							</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 panel">
+						<div class="panel-body">
+							<p class="text-right">
+								Copyright &copy; 2020, Thakur College of Engineering & Tech.
+							</p>
+						</div>
+					</div>
+
+				</div>
+				<!-- /row of panels -->
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="assets/js/custom.js"></script>
+
+	<!-- Google Maps -->
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+	<script src="assets/js/google-map.js"></script>
+
+
+</body>
+</html>
