@@ -39,7 +39,7 @@
             </ul>
           </div>
           </nav>
-          <div class="navbar-brand" href="#" style="font-size:250% !important; color:#2e45c7 !important; margin-left: 7%; margin-right: 20%"><b>Videos</b></div>
+          <div class="navbar-brand" href="#" style="font-size:250% !important; color:#2e45c7 !important; margin-left: 7%; margin-right: 20%"><b>assa</b></div>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -47,9 +47,9 @@
                   </li>
                   <li class="nav-item active">
                     <a class="nav-link mybtn myinfo" href="{% url 'logout' %}">Logout<span class="sr-only"></span></a>
-                  <!-- <li class="nav-item">
+                  <li class="nav-item">
                     <a class="nav-link mybtn myinfo" href="#">Back to Class</a>
-                  </li> -->
+                  </li>
                   <li class="nav-item active">
                     <div class="image_cropper">
                       <img src="{% get_media_prefix %}{{ user.profile_photo }}" alt="Profile Pic" class="profile_pic_style">
@@ -88,43 +88,39 @@
        
     </div> -->
 
-    {% for key,value in videos.items %}
     <div class="container" id="list1">
-      <h3>{{ key }} </h3>
+      <h3> E V S </h3>
       <div class="app">
         <ul class="hs full" >
-          {% for i in value %}
           <li class="item">
             
             
             <!-- <iframe src="https://www.youtube.com/embed/NYjDpw8vL-s" height="250px" width="400" allowfullscreen></iframe> -->
             
             <video width="320" height="240" preload="" controls>
-              <source src="{% get_media_prefix %}{{ i.video }}" type='video/mp4'>
+              <source src="C:/Users/Aunshuman/djangogirls/Gifted-master/base/templates/base/videos/video.mp4" type=video/mp4>
             </video>
             
             
             
             
-            <div style="margin: 30px;"><div><h3>{{i.video_name}}</h3></div><br><br><br><div><p>{{i.description}}</p></div></div>
-          </li>
-          
-          
-          {% endfor %}
+            <div style="margin: 30px;"><div><h3>Lecture 1</h3></div><br><br><br><div><p>How to blow a balloon?</p></div></div></li>
           
           
           
-          <!-- <li class="item"><iframe src="https://www.youtube.com/embed/M-ZdqFwayrU" height="250px" width="400" allowfullscreen></iframe><div style="margin: 30px;"><div><h3>Lecture 2</h3></div><br><br><br><div><p>How to blow a balloon?</p></div></div></li>
+          
+          
+          
+          <li class="item"><iframe src="https://www.youtube.com/embed/M-ZdqFwayrU" height="250px" width="400" allowfullscreen></iframe><div style="margin: 30px;"><div><h3>Lecture 2</h3></div><br><br><br><div><p>How to blow a balloon?</p></div></div></li>
           <li class="item"><iframe src="https://www.youtube.com/embed/0_NPW2zybfU" height="250px" width="400" allowfullscreen></iframe><div style="margin: 30px;"><div><h3>Lecture 3</h3></div><br><br><br><div><p>How to blow a balloon?</p></div></div></li>
           <li class="item"><iframe src="https://www.youtube.com/embed/CjbAEqWGkJE" height="250px" width="400" allowfullscreen></iframe><div style="margin: 30px;"><div><h3>Lecture 4</h3></div><br><br><br><div><p>How to blow a balloon?</p></div></div></li>
           <li class="item"><iframe src="https://www.youtube.com/embed/CjbAEqWGkJE" height="250px" width="400" allowfullscreen></iframe><div style="margin: 30px;"><div><h3>Lecture 5</h3></div><br><br><br><div><p>How to blow a balloon?</p></div></div></li>
-          <li class="item"><iframe src="https://www.youtube.com/embed/CjbAEqWGkJE" height="250px" width="400" allowfullscreen></iframe><div style="margin: 30px;"><div><h3>Lecture 6</h3></div><br><br><br><div><p>How to blow a balloon?</p></div></div></li> -->
+          <li class="item"><iframe src="https://www.youtube.com/embed/CjbAEqWGkJE" height="250px" width="400" allowfullscreen></iframe><div style="margin: 30px;"><div><h3>Lecture 6</h3></div><br><br><br><div><p>How to blow a balloon?</p></div></div></li>
         </ul>
       </div>
     </div>    
     <br><br><br>
-    {% endfor%}
-    <!-- <div class="container" id="list2">
+    <div class="container" id="list2">
       <h3> Math </h3>
       <div class="app">
         <ul class="hs full" >
@@ -137,8 +133,8 @@
         </ul>
       </div>
     </div>   
-    <br><br><br> -->
-    <!-- <div class="container" id="list3">
+    <br><br><br>
+    <div class="container" id="list3">
       <h3> English </h3>
       <div class="app">
         <ul class="hs full" >
@@ -150,9 +146,9 @@
           <li class="item"><iframe src="https://www.youtube.com/embed/CjbAEqWGkJE" height="250px" width="400" allowfullscreen></iframe><div style="margin: 30px;"><div><h3>Lecture 6</h3></div><br><br><br><div><p>How to blow a balloon?</p></div></div></li>
         </ul>
       </div>
-    </div>   -->
+    </div>  
 
-    <!-- <br><br> -->
+    <br><br>
     <!-- </div> -->
 
   

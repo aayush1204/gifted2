@@ -52,7 +52,7 @@ def mark_submission_request(request,submission_id,teacher_id):
         submission.marks_alloted = marks
         submission.save()
         print("teacher id")
-        teacher = Teachers.objects.get(teacher_id=request.user)
+        teacher = Teachers.objects.filter(teacher_id=request.user).first()
         print(teacher.teacher_id)
         # print(teacher.teacher_id.teacher_id)
         print(teacher.teacher_id.username)

@@ -9,6 +9,7 @@ from ..models import Students,Teachers
 from datetime import timedelta
 from datetime import datetime
 from ..models import Students,Teachers, CustomUser, Videos , Appointment
+from .. import email
 # authorize razorpay client with API Keys.
 razorpay_client = razorpay.Client(
 	auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
@@ -143,6 +144,7 @@ def paymenthandler_contactus(request):
                     print(ls[1])
                     print('Contact us successful')
                     print(asasa)
+                    
                     return redirect(reverse('home'))
                 except Exception as e:
                     print(e)
@@ -186,4 +188,6 @@ def paymentcontactinitiate(request):
 @csrf_exempt
 def paymentredirect(request):
     print(Appointment.objects.all())
+    app = Appointment.objects.all().last()
+    email.contactus_email(app)
     return redirect(reverse('landing_page'))

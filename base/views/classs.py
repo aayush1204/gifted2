@@ -46,11 +46,14 @@ def render_class(request,id):
         announcements = None
 
     try :
-        student = Students.objects.get(student_id=request.user)
+        student = Students.objects.filter(student_id=request.user)
     except Exception as e:
+        print(e)
         student = None
+    print("student - ")
 
-    if student is not None:
+    print(student)
+    if student.exists():
         try:
             submissions = Submissions.objects.filter(student_id=request.user)
         except Exception as e:
@@ -60,23 +63,36 @@ def render_class(request,id):
 
         is_student = 1
         print(student)
+        print("assngment-")
+        flag = 0
+        print(assignments)
         for i in assignments:
             # try:
             print(i.id)
             print('123')
             print(i)
             print(student)
-            submission = Submissions.objects.filter(student_id=student, assignment_id = i)
-            print(submission)
-            # except Exception as e:
-            #     submission = None
+            for j in student:
+                print(j)
+                submission = Submissions.objects.filter(student_id=j, assignment_id = i)
+                print(submission)
+                # except Exception as e:
+                #     submission = None
+                
+                if (submission.exists()):
+                    turned_in.append((i, '1'))
+                    flag = 1
+                else:
+                    # turned_in.append((i, '0'))   
+                    continue
             
-            if (submission.exists()):
-                turned_in.append((i, '1'))
-            else:
-                turned_in.append((i, '0'))   
+            if flag == 0:
+                turned_in.append((i, '0')) 
+            flag = 0
 
-        print(turned_in)             
+
+        print(turned_in)         
+        print("aaaaa")    
         teachers = Teachers.objects.filter(classroom_id = id)
         teacher_mapping = Teachers.objects.filter(teacher_id=request.user).select_related('classroom_id')
         student_mapping = Students.objects.filter(student_id=request.user).select_related('classroom_id')

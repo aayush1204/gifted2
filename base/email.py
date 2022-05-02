@@ -40,3 +40,17 @@ def submission_done_mail(assignment_id,user,submitted_file):
     message = 'Dear Student {}, you have made a submission {} for the assignment {} on {} .'.format(user.username,submitted_file.name,assignment_name,datetime.now())
     subject = 'File submitted for assignment {}'.format(assignment_name)
     send_email(subject,user_email,message)
+
+def contactus_email(app):
+    appointment_link = app.start_link
+    zoom_id = app.zoom_id
+    zoom_password = app.zoom_password
+    teacher_name = app.teacher_id.teacher_id.username
+    teacher_email = app.teacher_id.teacher_id.email
+    app_date = app.date
+    app_timing = app.timing
+    user_email = app.user_email
+    message = 'Dear user, your appointment with {} has been booked for the date {} at {}. Appointment Link - {} Zoom ID - {} Password - {} You have been billed Rs. 200 for the same. We wish you the best for your upcoming expert, kindly be on time. Become a subscriber and get a whole lot more from GIFTED!'.format(teacher_name,app_date,app_timing,appointment_link,zoom_id,zoom_password)
+    subject = 'Appointment Confirmed'
+    send_email(subject,user_email,message)
+    send_email(subject,teacher_email,message)

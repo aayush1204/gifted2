@@ -24,7 +24,13 @@ def about_us(request):
 def contact_us(request):
 
     
-    teachers = Teachers.objects.all()
+    
+    user1 = CustomUser.objects.filter(username="varija").first()
+    user2 = CustomUser.objects.filter(username="teacher1").first()
+    user3 = CustomUser.objects.filter(username="teacher2").first()
+    teachers =  [user1,user2,user3]
+    
+    # teachers = Teachers.objects.all()
     start_date = datetime.now()
     # print(start_date)
     end_date = datetime.now() + timedelta(days=6)
@@ -79,8 +85,8 @@ def contact_us(request):
         
         teacher_name = request.POST['product']
         # teacher_name = 'varija'
-        user1 = CustomUser.objects.get(username=teacher_name)
-        teacher = Teachers.objects.get(teacher_id=user1)
+        user1 = CustomUser.objects.filter(username=teacher_name).first()
+        teacher = Teachers.objects.filter(teacher_id=user1).first()
 
         from django_zoom_meetings import ZoomMeetings
         # Creat a JWT app your account https://marketplace.zoom.us/ and use
@@ -89,7 +95,7 @@ def contact_us(request):
         secret_key='JZZF8Ce3KXH1KvEocDVlsE08GgP0XJfvh1wR'
         zoom_email='aayush.halgekar@gmail.com'
         my_zoom = ZoomMeetings(api_key,secret_key,zoom_email)
-        str_topic="test meetig"
+        str_topic="Consultation Meeting"
         timenow = datetime.now()
         dates_ls = ls[1].split('-')
         # date1= datetime(2021,7,5,13,30)
@@ -113,7 +119,7 @@ def contact_us(request):
         create_meeting = my_zoom.CreateMeeting(date1,str_topic,str_meeting_duration,str_meeting_password) 
            
 
-        Appointment.objects.create(timing = time2, date=ls[1],teacher_id=teacher,firstname=name,appointment_link = create_meeting['join_url'], zoom_id= create_meeting['id'],start_link=create_meeting['start_url'], zoom_password=create_meeting['password'])
+        Appointment.objects.create(user_email = email,timing = time2, date=ls[1],teacher_id=teacher,firstname=name,appointment_link = create_meeting['join_url'], zoom_id= create_meeting['id'],start_link=create_meeting['start_url'], zoom_password=create_meeting['password'])
        
         return redirect(reverse('paymenthandler_contactus'))
         # student = Students.objects.get(student_id = request.user)
@@ -151,7 +157,7 @@ def gifted_videos(request):
 @login_required(login_url='login')
 def home(request):
     try :
-        student = Students.objects.get(student_id = request.user)
+        student = Students.objects.filter(student_id = request.user).first()
         subscribed = student.student_id.is_subscribed
         freetrial = student.student_id.is_free_trial
         print(12345)
@@ -164,6 +170,7 @@ def home(request):
 
         print(present < student.student_id.expiry_free_trial)
     except Exception as e:
+        print("first - ")
         print(e)
         subscribed = True
         freetrial = False
@@ -174,17 +181,22 @@ def home(request):
         teacher_mapping = Teachers.objects.filter(teacher_id=request.user).select_related('classroom_id')
         student_mapping = Students.objects.filter(student_id=request.user).select_related('classroom_id')
         teachers_all = Teachers.objects.all()
+        students_all =  Students.objects.all()
         mappings = chain(teacher_mapping,student_mapping) 
         try:
-            student = Students.objects.get(student_id = request.user)
+            student = Students.objects.filter(student_id = request.user).first()
         except Exception as e:
+            print("student")
             student = None
         try:
-            teacher = Teachers.objects.get(teacher_id = request.user)
+            teacher = Teachers.objects.filter(teacher_id = request.user).first()
+            print(teacher)
         except Exception as e:
+            print("teacher - ")
+            print(e)
             teacher = None
         is_student = 0
         if teacher is None:
             is_student = 1
-                            
-        return render(request,'base/home.html',{'mappings':mappings,'teachers_all':teachers_all,'is_student':is_student}) 
+        print(is_student)                    
+        return render(request,'base/home.html',{'mappings':mappings,'teachers_all':teachers_all,'students_all':students_all, 'is_student':is_student}) 

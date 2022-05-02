@@ -78,6 +78,7 @@ class Appointment(models.Model):
     status=models.BooleanField(default=False)
     is_disapproved = models.BooleanField(default=False)
     is_notified = models.BooleanField(default=False)
+    user_email = models.CharField(max_length=50, default="None")
 
 class Announcements(models.Model):
     classroom_id=models.ForeignKey(Classrooms,on_delete=models.CASCADE)

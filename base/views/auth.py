@@ -20,16 +20,19 @@ def register_view(request):
             existing_codes=[]
             for classroom in classrooms:
                 existing_codes.append(classroom.class_code)
-            class1 = Classrooms.objects.create(classroom_name="EVS",section="2nd year", class_code=generate_class_code(6,existing_codes))
+            class1 = Classrooms.objects.create(classroom_name="EVS - "+user_name,section="2nd year", class_code=generate_class_code(6,existing_codes))
             class1.save()
-            class2 = Classrooms.objects.create(classroom_name="Maths",section="2nd year", class_code=generate_class_code(6,existing_codes))
+            class2 = Classrooms.objects.create(classroom_name="Maths - "+user_name,section="2nd year", class_code=generate_class_code(6,existing_codes))
             class1.save()
-            class3 = Classrooms.objects.create(classroom_name="Physics",section="2nd year", class_code=generate_class_code(6,existing_codes))
+            class3 = Classrooms.objects.create(classroom_name="Physics - "+user_name,section="2nd year", class_code=generate_class_code(6,existing_codes))
             class1.save()
-            user1 = CustomUser.objects.get(username="varija")
+            # user1 = CustomUser.objects.get(username="varija")
+            user1 = CustomUser.objects.filter(username="varija").first()
+            user2 = CustomUser.objects.filter(username="teacher1").first()
+            user3 = CustomUser.objects.filter(username="teacher10").first()
             Teachers.objects.create(teacher_id=user1, classroom_id=class1)
-            Teachers.objects.create(teacher_id=user1, classroom_id=class2)
-            Teachers.objects.create(teacher_id=user1, classroom_id=class3)
+            Teachers.objects.create(teacher_id=user2, classroom_id=class2)
+            Teachers.objects.create(teacher_id=user3, classroom_id=class3)
             Students.objects.create(student_id=user, classroom_id=class1)
             Students.objects.create(student_id=user, classroom_id=class2)
             Students.objects.create(student_id=user, classroom_id=class3)
@@ -45,6 +48,7 @@ def login_view(request):
     if request.method=="POST":
         form=UserAuthenticationForm(request=request,data=request.POST)
         print(form)
+        print(form.is_valid())
         if form.is_valid():
             user_name=form.cleaned_data.get('username')
             password=form.cleaned_data.get('password')
