@@ -37,7 +37,7 @@
                 <a  href="{% get_media_prefix %}{{ assignment.instruction_file }}" download> Download instruction file </a>
               
                 {% if turned_in == '1' %}
-                <form action="{% url 'del_sub' id=1 assignment_id=assignment.id %}" method="POST" id="del_sub_form" >
+                <form action="{% url 'del_sub' id=classroom.id assignment_id=assignment.id %}" method="POST" id="del_sub_form" >
                   {% csrf_token %}
                   <button type="submit" class="btn btn-primary">Delete Submission</button>
                 </form> 

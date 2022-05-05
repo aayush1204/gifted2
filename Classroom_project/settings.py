@@ -110,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -155,8 +155,8 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 EMAIL_HOST='smtp.gmail.com'
-EMAIL_HOST_USER='aayushhalgekar0@gmail.com'
-EMAIL_HOST_PASSWORD='lkiqolzwwzgjmwmp'
+EMAIL_HOST_USER='connect.gifted@gmail.com'
+EMAIL_HOST_PASSWORD='bdrcnszbgvtabsda'
 EMAIL_PORT='587'
 
 RAZOR_KEY_ID = 'rzp_test_hshegVTXwyFOHF'
